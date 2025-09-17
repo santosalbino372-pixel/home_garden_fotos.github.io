@@ -1,0 +1,231 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hogar & Jardín — Fotos & Consejos</title>
+  <style>
+    :root{
+      --bg:#f6f9f8;
+      --card:#ffffff;
+      --accent:#2e8b57;
+      --muted:#64748b;
+      --shadow: 0 6px 20px rgba(16,24,40,0.08);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#0f172a;line-height:1.45}
+    header{background:linear-gradient(120deg,#d6f6e3,#e8f7ff);padding:40px 18px;text-align:center;border-bottom:1px solid rgba(15,23,42,0.04)}
+    header h1{margin:0;font-size:28px;color:#054f3d}
+    header p{margin:8px auto 0;color:var(--muted);max-width:760px}
+    .container{max-width:1100px;margin:0 auto;padding:24px 18px}
+    .tips{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:18px}
+    .tip-card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow);border:1px solid rgba(15,23,42,0.03)}
+    .tip-card h3{margin:0 0 6px;font-size:16px;color:#054f3d}
+    .search-area{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+    .searchbar{display:flex;gap:10px;align-items:center}
+    .searchbar input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid rgba(15,23,42,0.07);font-size:15px;box-shadow:var(--shadow)}
+    .searchbar button{background:var(--accent);color:white;border:none;padding:12px 16px;border-radius:10px;cursor:pointer;font-weight:600;box-shadow:var(--shadow)}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .filter{background:#fff;padding:8px 10px;border-radius:999px;border:1px solid rgba(15,23,42,0.04);font-size:13px;color:var(--muted);cursor:pointer}
+    main{padding:18px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+    .card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(15,23,42,0.03);display:flex;flex-direction:column}
+    .card img{width:100%;height:180px;object-fit:cover;display:block}
+    .card-body{padding:14px;flex:1;display:flex;flex-direction:column}
+    .card h3{margin:0 0 8px;font-size:18px;color:#064e3b}
+    .meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+    .examples{margin-top:auto}
+    .examples ul{margin:8px 0 0;padding-left:18px;color:#0f172a}
+    .examples li{margin-bottom:6px}
+    footer{padding:20px 0;color:var(--muted);font-size:13px;text-align:center;margin-top:28px;border-top:1px solid rgba(15,23,42,0.03)}
+    @media (max-width:720px){
+      .card img{height:160px}
+      header h1{font-size:22px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hogar & Jardín — Fotos, Consejos y Respuestas</h1>
+    <p>Encuentra ideas prácticas con fotos reales, ejemplos y pasos. Usa el buscador para obtener respuestas rápidas y ejemplos para cada tema.</p>
+  </header>
+
+  <section class="container">
+    <div class="tips" aria-hidden="false">
+      <div class="tip-card"><h3>💡 Tip: Iluminación eficiente</h3><p>Reemplaza focos incandescentes por LED y coloca atenuadores para ambientes acogedores.</p></div>
+      <div class="tip-card"><h3>🌿 Tip: Plantas resistentes</h3><p>Comienza con potus, sansevieria o suculentas si no tienes mucha experiencia.</p></div>
+      <div class="tip-card"><h3>🧹 Tip: Limpieza rápida</h3><p>Usa una mezcla de vinagre y agua para limpiar vidrios y superficies sin químicos agresivos.</p></div>
+      <div class="tip-card"><h3>🔧 Tip: Herramientas organizadas</h3><p>Coloca tablas perforadas (pegboard) para tener herramientas a la vista y ordenadas.</p></div>
+    </div>
+
+    <div class="search-area" style="margin-top:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <h2 style="margin:0;color:#064e3b">🔍 Busca por tema o palabra clave</h2>
+        <div style="color:var(--muted);font-size:14px">Resultados con foto + ejemplos</div>
+      </div>
+
+      <div class="searchbar" role="search">
+        <input id="query" type="search" placeholder="Ej: plantas, riego, sofá, herramientas..." aria-label="Buscar en Hogar y Jardín">
+        <button id="searchBtn" type="button">Buscar</button>
+      </div>
+      <div class="filters" id="filters" aria-label="Filtros">
+        <button class="filter" data-filter="all">Todos</button>
+        <button class="filter" data-filter="plantas">Plantas</button>
+        <button class="filter" data-filter="jardineria">Jardinería</button>
+        <button class="filter" data-filter="muebles">Muebles</button>
+        <button class="filter" data-filter="decoracion">Decoración</button>
+        <button class="filter" data-filter="iluminacion">Iluminación</button>
+        <button class="filter" data-filter="cocina">Cocina</button>
+        <button class="filter" data-filter="dormitorio">Dormitorio</button>
+        <button class="filter" data-filter="herramientas">Herramientas</button>
+        <button class="filter" data-filter="limpieza">Limpieza</button>
+        <button class="filter" data-filter="reciclaje">Reciclaje</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" id="main">
+    <section id="results" aria-live="polite">
+      <div class="grid" id="grid"></div>
+      <div id="noResults" style="display:none;text-align:center;color:var(--muted);padding:30px">No se encontraron resultados. Prueba otra búsqueda.</div>
+    </section>
+  </main>
+
+  <footer>
+    <small>© 2025 Hogar & Jardín — Demo con imágenes de Unsplash (uso de sus fotos mediante URLs públicas)</small>
+  </footer>
+
+  <script>
+    // Datos con imagen (Unsplash), descripción y ejemplos
+    const ITEMS = [
+      {
+        id:1, category:"plantas", title:"Plantas de interior que purifican el aire",
+        desc:"Plantas fáciles de cuidar que ayudan a mejorar la calidad del aire en espacios cerrados.",
+        img:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
+        ejemplos:["Aloe Vera — riego moderado y luz indirecta","Potus — ideal en estanterías y colgantes","Helecho de Boston — alta humedad, mantenlo en sombra parcial"]
+      },
+      {
+        id:2, category:"jardineria", title:"Huerto urbano en macetas",
+        desc:"Cómo montar un huerto en macetas para hierbas y vegetales en balcones y terrazas.",
+        img:"https://images.unsplash.com/photo-1490843318657-2f2a7d7a1143?auto=format&fit=crop&w=1200&q=80",
+        ejemplos:["Tomates cherry en maceta — usa sustrato nutritivo","Hierbas (albahaca, cilantro) — riego frecuente","Rotación de macetas para evitar plagas"]
+      },
+      {
+        id:3, category:"muebles", title:"Muebles de sala: cómo elegir el sofá",
+        desc:"Guía rápida para elegir tamaño, tela y estilo según tu sala.",
+        img:"https://images.unsplash.com/photo-1567016531940-70f6e80b6d8f?auto=format&fit=crop&w=1200&q=80",
+        ejemplos:["Mide el espacio antes de comprar","Prefiere telas lavables si hay niños/pets","Considera un sofá seccional para salas grandes"]
+      },
+      {
+        id:4, category:"decoracion", title:"Decoración de interiores con poco presupuesto",
+        desc:"Ideas económicas para renovar tu espacio sin grandes inversiones.",
+        img:"https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80",
+        ejemplos:["Cambia cojines y mantas para un look nuevo","Aprovecha cuadros y láminas DIY","Usa plantas pequeñas como acentos decorativos"]
+      },
+      {
+        id:5, category:"iluminacion", title:"Iluminación: crear ambientes con luz",
+        desc:"Consejos para lograr ambientes cálidos o funcionales con la iluminación adecuada.",
+        img:"https://images.unsplash.com/photo-1505691723518-36a1fb2a60d5?auto=format&fit=crop&w=1200&q=80",
+        ejemplos:["Combina luz general y puntual (lámparas)","Usa temperatura cálida en salones","Instala reguladores para ajustar intensidad"]
+      },
+      {
+        id:6, category:"cocina", title:"Organización de cocina y aprovechamiento del espacio",
+        desc:"Trucos para mantener la cocina organizada y maximizar espacio de almacenamiento.",
+        img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+        ejemplos:["Usa organizadores verticales en armarios","Ganchos para tazas bajo estantes","Cestas etiquetadas para despensa"]
+      },
+      {
+        id:7, category:"dormitorio", title:"Dormitorio: consejos para mejorar el descanso",
+        desc:"Pequeños cambios que mejoran la calidad del sueño y hacen el dormitorio más acogedor.",
+        img:"https://images.unsplash.com/photo-1505691723518-36a1fb2a60d5?auto=format&fit=crop&w=1200&q=80",
+        ejemplos:["Mantén la habitación oscura y fresca","Invierte en una almohada adecuada","Usa colores suaves en paredes y ropa de cama"]
+      },
+      {
+        id:8, category:"herramientas", title:"Herramientas básicas para bricolaje en casa",
+        desc:"Set esencial de herramientas para arreglos y proyectos domésticos simples.",
+        img:"https://images.unsplash.com/photo-1605902711622-cfb43c44367e?auto=format&fit=crop&w=1200&q=80",
+        ejemplos:["Destornilladores y martillo","Taladro con brocas básicas","Cinta métrica y nivel"]
+      },
+      {
+        id:9, category:"limpieza", title:"Limpieza eficiente: productos caseros",
+        desc:"Recetas caseras y técnicas para limpiar distintas superficies sin químicos agresivos.",
+        img:"https://images.unsplash.com/photo-1504274066651-8d31a536b11a?auto=format&fit=crop&w=1200&q=80",
+        ejemplos:["Limpiador de vinagre y agua para cristales","Bicarbonato para manchas en alfombras","Aceite de limón para pulir madera"]
+      },
+      {
+        id:10, category:"reciclaje", title:"Reciclaje creativo y compostaje",
+        desc:"Cómo reciclar y compostar en casa para reducir residuos y crear abono para tus plantas.",
+        img:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
+        ejemplos:["Compost en contenedor para restos vegetales","Reutiliza frascos como macetas","Separa residuos por tipo y etiqueta"]
+      }
+    ];
+
+    // Helper: escape HTML
+    function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+    // Build card element
+    function makeCard(item){
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `
+        <img src="${esc(item.img)}" alt="${esc(item.title)}">
+        <div class="card-body">
+          <h3>${esc(item.title)}</h3>
+          <div class="meta">${esc(item.desc)}</div>
+          <div class="examples"><strong>Ejemplos / Pasos:</strong><ul>${item.ejemplos.map(e=>'<li>'+esc(e)+'</li>').join('')}</ul></div>
+        </div>
+      `;
+      return div;
+    }
+
+    const grid = document.getElementById('grid');
+    const queryInput = document.getElementById('query');
+    const searchBtn = document.getElementById('searchBtn');
+    const filtersEl = document.getElementById('filters');
+    const noResults = document.getElementById('noResults');
+
+    let activeFilter = 'all';
+
+    // Render
+    function render(items){
+      grid.innerHTML = '';
+      if(!items.length){ noResults.style.display='block'; return; } else noResults.style.display='none';
+      const frag = document.createDocumentFragment();
+      items.forEach(it=>frag.appendChild(makeCard(it)));
+      grid.appendChild(frag);
+    }
+
+    // Search logic: match title, desc, ejemplos, category
+    function search(q, filter){
+      q = (q||'').trim().toLowerCase();
+      const tokens = q.split(/\s+/).filter(Boolean);
+      return ITEMS.filter(it=>{
+        if(filter && filter!=='all' && it.category !== filter) return false;
+        if(!tokens.length) return true;
+        const hay = (it.title + ' ' + it.desc + ' ' + it.ejemplos.join(' ') + ' ' + it.category).toLowerCase();
+        return tokens.every(tok=>hay.includes(tok));
+      });
+    }
+
+    function doSearch(){ render(search(queryInput.value, activeFilter)); }
+
+    // Event listeners
+    searchBtn.addEventListener('click', doSearch);
+    queryInput.addEventListener('keydown', e=>{ if(e.key==='Enter') doSearch(); });
+    filtersEl.addEventListener('click', e=>{
+      const b = e.target.closest('button.filter'); if(!b) return;
+      activeFilter = b.dataset.filter || 'all';
+      Array.from(filtersEl.querySelectorAll('button.filter')).forEach(x=>x.style.background='#fff');
+      b.style.background='#d4f7df';
+      doSearch();
+    });
+
+    // Initial render with all items and select "Todos"
+    const allBtn = filtersEl.querySelector('button.filter[data-filter="all"]');
+    if(allBtn) allBtn.style.background='#d4f7df';
+    render(ITEMS);
+  </script>
+</body>
+</html>
